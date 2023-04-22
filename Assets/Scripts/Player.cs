@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 stPos = new Vector3(0, -7, 0);
+        transform.position = stPos;
         // Rigidbodyにアクセスして変数に保持
         myRigidbody = GetComponent<Rigidbody>();
     }
