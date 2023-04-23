@@ -10,19 +10,26 @@ public class Ball : MonoBehaviour
     public float maxSpeed = 10f;
     Rigidbody myRigidbody;
     Transform myTransform;
+    bool isStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = GetComponent<Rigidbody>();
-        // 右斜め45度に進む
-        myRigidbody.velocity = new Vector3(speed, speed, 0f);
+        myRigidbody.velocity = new Vector3(0f, 0f, 0f);
         myTransform = transform;
     }
 
     void Update()
     {
+        // Ballが動き出していなければ、タッチされたら動き出す
+        if (!isStarted && Input.touchCount > 0)
+        {
+            myRigidbody.velocity = new Vector3(speed, speed, 0f);
+            isStarted = true;
+        }
+
         // 現在の速度を取得
         Vector3 velocity = myRigidbody.velocity;
         // 速さを計算
