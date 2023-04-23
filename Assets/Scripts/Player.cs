@@ -9,12 +9,13 @@ public class Player : MonoBehaviour
     Rigidbody myRigidbody;
 
     // タッチされている位置を保存する変数
-    Vector2 touchPos;
+    Vector3 touchPos;
+    Vector3 stPos = new Vector3(0, -7, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 stPos = new Vector3(0, -7, 0);
+        touchPos = stPos;
         transform.position = stPos;
         // Rigidbodyにアクセスして変数に保持
         myRigidbody = GetComponent<Rigidbody>();
@@ -29,8 +30,6 @@ public class Player : MonoBehaviour
         {
             touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         }
-        else
-            touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         Vector2 initialPos = transform.position;
 
