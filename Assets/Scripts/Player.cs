@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     // プレイヤーの移動の速さ
     public float speed = 10f;
     Rigidbody myRigidbody;
+    // Ball コンポーネントへの参照
+    private static Ball ballManager;
 
     // タッチされている位置を保存する変数
     Vector3 touchPos;
@@ -19,12 +23,17 @@ public class Player : MonoBehaviour
         transform.position = stPos;
         // Rigidbodyにアクセスして変数に保持
         myRigidbody = GetComponent<Rigidbody>();
+        ballManager = GameObject.Find("BallGenerator").GetComponent<Ball>();
     }
 
     // Update is called once per frame
     void Update()
     {
         myRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * speed, 0f, 0f);
+        if (Input.GetMouseButtonDown(0))
+        {
+            ballManager.SpawnBall(transform.position);
+        }
         //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //if (Input.touchCount > 0)

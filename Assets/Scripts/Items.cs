@@ -12,9 +12,11 @@ public class Items : MonoBehaviour
     public GameObject itemPrefab;
     // Block を破壊したときに Item を生成する確率
     public float spawnProbability = 0.3f;
+    private Ball ballManager;
 
     private void Start()
     {
+        ballManager = GameObject.Find("BallGenerator").GetComponent<Ball>();
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = itemPrefab.gameObject.GetComponent<Rigidbody>();
         myRigidbody.velocity = new Vector3(0f, -5f, 0f);
@@ -25,6 +27,12 @@ public class Items : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // Ballの数を倍にする
+            ballManager.BallCount += 1;
+
+            // 破壊された Block の位置に Item を生成する
+            ballManager.SpawnBall(transform.position);
+
             // ゲームオブジェクトを削除するメソッド
             Destroy(gameObject);
         }

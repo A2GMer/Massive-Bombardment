@@ -11,6 +11,13 @@ public class GameOver : MonoBehaviour
     // ゲームオーバーしたかどうかを判断するための変数
     bool isGameOver = false;
 
+    private Ball ballManager;
+
+    void Start()
+    {
+        ballManager = GameObject.Find("BallGenerator").GetComponent<Ball>();
+    }
+
     void Update()
     {
         // ゲームオーバーになっている、かつ、Submitボタンを押したら実行する
@@ -26,11 +33,18 @@ public class GameOver : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            // Game Overと表示する
-            gameOverMessage.text = "Game Over";
+            ballManager.BallCount -= 1;
+            //ballManager.ballPrefabList.Remove();
             // 当たったゲームオブジェクトを削除する
             Destroy(collision.gameObject);
-            isGameOver = true;
+
+            Debug.Log(ballManager.BallCount);
+            if (ballManager.BallCount <= 0)
+            {
+                // Game Overと表示する
+                gameOverMessage.text = "Game Over";
+                isGameOver = true;
+            }
         }
         else
         {

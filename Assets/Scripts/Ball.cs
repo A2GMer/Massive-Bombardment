@@ -12,12 +12,19 @@ public class Ball : MonoBehaviour
     Transform myTransform;
     bool isStarted = false;
 
+    // Ball オブジェクトのプレハブ
+    public GameObject ballPrefab;
+
+    public int BallCount { get; set; } = 1;
+
+    //public GameObject[] ballPrefabList;
+
     // Start is called before the first frame update
     void Start()
     {
         // Rigidbodyにアクセスして変数に保持しておく
-        myRigidbody = GetComponent<Rigidbody>();
-        myRigidbody.velocity = new Vector3(0f, 1f, 0f);
+        myRigidbody = ballPrefab.GetComponent<Rigidbody>();
+        myRigidbody.velocity = new Vector3(1f, 1f, 0f);
         //myRigidbody.velocity = new Vector3(0f, 0f, 0f);
         myTransform = transform;
     }
@@ -55,5 +62,13 @@ public class Ball : MonoBehaviour
             // 速度を変更
             myRigidbody.velocity = direction * speed;
         }
+    }
+
+    // Ball オブジェクトを生成する関数
+    public void SpawnBall(Vector3 position)
+    {
+        // Ball オブジェクトを生成する
+        GameObject ball = Instantiate(ballPrefab, position, Quaternion.identity);
+        //ballPrefabList.Add(ball);
     }
 }
