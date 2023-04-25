@@ -14,19 +14,17 @@ public class Blocks : MonoBehaviour
     // 何かとぶつかった時に呼ばれるビルトインメソッド
     void OnCollisionEnter(Collision collision)
     {
-        // ゲームオブジェクトを削除するメソッド
-        Destroy(gameObject);
-        Debug.Log("Destroy");
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            // ゲームオブジェクトを削除するメソッド
+            Destroy(gameObject);
 
-        // 一定の確率で Item を生成する
-        if (Random.value < itemManager.spawnProbability)
-        {
-            Debug.Log("Item Spawn");
-            // 破壊された Block の位置に Item を生成する
-            itemManager.SpawnItem(transform.position);
-        }
-        {
-            Debug.Log("No Item");
+            // 一定の確率で Item を生成する
+            if (Random.value < itemManager.spawnProbability)
+            {
+                // 破壊された Block の位置に Item を生成する
+                itemManager.SpawnItem(transform.position);
+            }
         }
     }
 }

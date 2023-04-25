@@ -17,7 +17,7 @@ public class Items : MonoBehaviour
     {
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = itemPrefab.gameObject.GetComponent<Rigidbody>();
-        myRigidbody.velocity = new Vector3(0f, -1, 0f);
+        myRigidbody.velocity = new Vector3(0f, -5f, 0f);
         myTransform = transform;
     }
     
@@ -27,10 +27,6 @@ public class Items : MonoBehaviour
         {
             // ゲームオブジェクトを削除するメソッド
             Destroy(gameObject);
-        }
-        else
-        {
-            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
     }
 

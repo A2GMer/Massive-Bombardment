@@ -24,10 +24,17 @@ public class GameOver : MonoBehaviour
     // 衝突時に呼ばれる
     void OnCollisionEnter(Collision collision)
     {
-        // Game Overと表示する
-        gameOverMessage.text = "Game Over";
-        // 当たったゲームオブジェクトを削除する
-        Destroy(collision.gameObject);
-        isGameOver = true;
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            // Game Overと表示する
+            gameOverMessage.text = "Game Over";
+            // 当たったゲームオブジェクトを削除する
+            Destroy(collision.gameObject);
+            isGameOver = true;
+        }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
