@@ -34,7 +34,6 @@ public class GameOver : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             ballManager.BallCount -= 1;
-            //ballManager.ballPrefabList.Remove();
             // 当たったゲームオブジェクトを削除する
             Destroy(collision.gameObject);
 
