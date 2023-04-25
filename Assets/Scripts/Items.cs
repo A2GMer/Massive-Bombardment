@@ -8,6 +8,11 @@ public class Items : MonoBehaviour
     Rigidbody myRigidbody;
     Transform myTransform;
 
+    // Item オブジェクトのプレハブ
+    public GameObject itemPrefab;
+    // Block を破壊したときに Item を生成する確率
+    public float spawnProbability = 0.5f;
+
     private void Start()
     {
         // Rigidbodyにアクセスして変数に保持しておく
@@ -27,5 +32,12 @@ public class Items : MonoBehaviour
         {
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         }
+    }
+
+    // Item オブジェクトを生成する関数
+    public void SpawnItem(Vector3 position)
+    {
+        // Item オブジェクトを生成する
+        GameObject item = Instantiate(itemPrefab, position, Quaternion.identity);
     }
 }
