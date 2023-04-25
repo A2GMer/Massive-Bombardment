@@ -11,7 +11,7 @@ public class Items : MonoBehaviour
     // Item オブジェクトのプレハブ
     public GameObject itemPrefab;
     // Block を破壊したときに Item を生成する確率
-    public float spawnProbability = 0.5f;
+    public float spawnProbability = 0.3f;
 
     private void Start()
     {

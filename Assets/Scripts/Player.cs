@@ -24,24 +24,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        myRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * speed, 0f, 0f);
+        //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.touchCount > 0)
-        {
-            touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-        }
+        //if (Input.touchCount > 0)
+        //{
+        //    touchPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        //}
 
-        Vector2 initialPos = transform.position;
+        //Vector2 initialPos = transform.position;
 
-        float t = 0.25f;
+        //float t = 0.25f;
 
-        transform.position = new Vector3(Mathf.Lerp(initialPos.x, touchPos.x, t), transform.position.y, transform.position.z);
+        //transform.position = new Vector3(Mathf.Lerp(initialPos.x, touchPos.x, t), transform.position.y, transform.position.z);
 
-        Vector2 playerScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        //Vector2 playerScreenPos = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (playerScreenPos.x <= 0f)
-            transform.position = new Vector3(-2.44f, transform.position.y, 0f);
-        if (playerScreenPos.x >= Screen.width)
-            transform.position = new Vector3(2.44f, transform.position.y, 0f);
+        //if (playerScreenPos.x <= 0f)
+        //    transform.position = new Vector3(-2.44f, transform.position.y, 0f);
+        //if (playerScreenPos.x >= Screen.width)
+        //    transform.position = new Vector3(2.44f, transform.position.y, 0f);
     }
 }

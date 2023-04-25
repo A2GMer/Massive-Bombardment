@@ -17,7 +17,8 @@ public class Ball : MonoBehaviour
     {
         // Rigidbodyにアクセスして変数に保持しておく
         myRigidbody = GetComponent<Rigidbody>();
-        myRigidbody.velocity = new Vector3(0f, 0f, 0f);
+        myRigidbody.velocity = new Vector3(0f, 1f, 0f);
+        //myRigidbody.velocity = new Vector3(0f, 0f, 0f);
         myTransform = transform;
     }
 
@@ -26,7 +27,7 @@ public class Ball : MonoBehaviour
         // Ballが動き出していなければ、タッチされたら動き出す
         if (!isStarted && Input.touchCount > 0)
         {
-            myRigidbody.velocity = new Vector3(speed, speed, 0f);
+            myRigidbody.velocity = new Vector3(0f, 1f, 0f);
             isStarted = true;
         }
 

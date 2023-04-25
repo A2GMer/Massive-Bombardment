@@ -16,6 +16,7 @@ public class Blocks : MonoBehaviour
     {
         // ゲームオブジェクトを削除するメソッド
         Destroy(gameObject);
+        Debug.Log("Destroy");
 
         // 一定の確率で Item を生成する
         if (Random.value < itemManager.spawnProbability)
