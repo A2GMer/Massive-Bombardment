@@ -5,11 +5,11 @@ using UnityEngine;
 public class Blocks : MonoBehaviour
 {
     // Items コンポーネントへの参照
-    private Items itemManager;
+    private static Items itemManager;
 
     private void Start()
     {
-        itemManager = FindObjectOfType<Items>();
+        itemManager = GameObject.Find("ItemGenerator").GetComponent<Items>();
     }
     // 何かとぶつかった時に呼ばれるビルトインメソッド
     void OnCollisionEnter(Collision collision)

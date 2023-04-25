@@ -16,7 +16,7 @@ public class Items : MonoBehaviour
     private void Start()
     {
         // Rigidbodyにアクセスして変数に保持しておく
-        myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody = itemPrefab.gameObject.GetComponent<Rigidbody>();
         myRigidbody.velocity = new Vector3(0f, -1, 0f);
         myTransform = transform;
     }
